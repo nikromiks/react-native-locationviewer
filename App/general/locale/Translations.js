@@ -6,7 +6,11 @@ I18n.fallbacks = true;
 I18n.translations = {
   en: {
     buttons: {
-      buttons: 'Back'
+      back: 'Back'
+    },
+    prompt: {
+      cancel: 'Cancel',
+      save: 'Save'
     },
     list: {
       title: 'List',
@@ -25,8 +29,12 @@ I18n.translations = {
       buttons: {
         list: 'List',
       },
+      dialog: {
+        title: 'Please enter place name',
+        placeholder: 'New name'
+      }
     },
   },
 };
 
-export default I18n;
+export default I18n

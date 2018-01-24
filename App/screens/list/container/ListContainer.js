@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, FlatList} from 'react-native';
 
 import I18n from 'app/general/locale/Translations';
 import {renderNavBarButton} from 'app/navigator/AppNavigator';
@@ -8,14 +8,17 @@ import {resetAction} from 'app/navigator/AppNavigator';
 import routes from 'app/navigator/routes';
 
 import styles from 'app/screens/list/styles/ListStyles';
+import ListItemComponent from 'app/screens/list/components/ListItemComponent';
 
 import actions from 'app/general/actions';
 import {connect} from 'react-redux';
 
+import {type LocationEntity} from 'app/general/components/LocationAPI/reducers/LocationReducer';
 import type {State} from 'app/general/types/State';
 
 type Props = {
   navigation: any,
+  pins: Array<LocationEntity>
 };
 
 function renderRightComponent({state}: any) {
@@ -39,16 +42,35 @@ class ListContainer extends Component<Props> {
     this.props.navigation.dispatch(resetAction(routes.Map));
   };
 
+  handlePressItem = (item) => {
+    this.props.navigation.navigate(routes.Detail, {item});
+  };
+
   render() {
     return (
-      <View/>
+      <FlatList
+        style={styles.root}
+        data={this.props.pins}
+        keyExtractor={(item) => item.name}
+        renderItem={this.renderItem}
+      />
     );
   }
+
+  renderItem = ({item}) => {
+    return (
+      <ListItemComponent
+        key={item.name}
+        onPress={this.handlePressItem}
+        pin={item}
+      />
+    );
+  };
 }
 
-const mapStateToProps = ({system}: State) => {
+const mapStateToProps = ({location}: State) => {
   return {
-    isOnline: false,
+    pins: location.entities,
   };
 };
 

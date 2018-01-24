@@ -3,15 +3,13 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   root: {
-    flex: 1
+    flex: 1,
+    margin: 16
   },
-  loadingIndicator: {
-    position: 'absolute',
-    backgroundColor: `${colors.black}BB`,
-    zIndex: 2,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0
-  },
+  title: {
+    fontSize: 17
+  }
+
+
+
 });
