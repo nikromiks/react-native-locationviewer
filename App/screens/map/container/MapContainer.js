@@ -1,7 +1,8 @@
 // @flow
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import I18n from 'app/general/locale/Translations';
 import {renderNavBarButton} from 'app/navigator/AppNavigator';
 import {resetAction} from 'app/navigator/AppNavigator';
@@ -42,6 +43,16 @@ class ListContainer extends Component<Props> {
   render() {
     return (
       <View style={styles.root}>
+        <MapView
+          provider={PROVIDER_GOOGLE}
+          style={{...StyleSheet.absoluteFillObject}}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
       </View>
     );
   }
