@@ -8,10 +8,9 @@ import {type LocationEntity} from 'app/general/components/LocationAPI/reducers/L
 
 type Props = {
   pin: LocationEntity,
-  onPress: (*) => void
+  onPress: (*) => void,
+  onPressPin: (*) => void
 };
-
-const SPACE = 0.01;
 
 export default class PinComponent extends Component<Props> {
 
@@ -19,18 +18,23 @@ export default class PinComponent extends Component<Props> {
     this.props.onPress(this.props.pin);
   };
 
+  handlePressPin = () => {
+    this.props.onPressPin(this.props.pin);
+  };
+
   render() {
     const {pin} = this.props;
 
     return (
       <MapView.Marker
+        onPress={this.handlePress}
         coordinate={{
           latitude: pin.lat,
           longitude: pin.lng,
         }}
       >
         <MapView.Callout
-          onPress={this.handlePress}>
+          onPress={this.handlePressPin}>
           <View>
             <Text>{pin.name}</Text>
           </View>

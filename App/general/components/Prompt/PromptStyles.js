@@ -28,7 +28,7 @@ export default StyleSheet.create({
     overflow: 'hidden'
   },
   dialogHeader: {
-    height: 84,
+    height: 64,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
@@ -42,16 +42,16 @@ export default StyleSheet.create({
   dialogSubTitleText: {
     fontSize: 13,
     color: colors.black,
-    marginTop: 6
   },
   dialogBody: {
-    height: 37,
+    height: 40,
     alignItems: 'center',
     paddingHorizontal: 16,
-    backgroundColor: colors.alertDialogBackground
+    backgroundColor: colors.alertDialogBackground,
+    marginBottom: 6
   },
   dialogInput: {
-    height: 24,
+    height: 40,
     width: 200,
     fontSize: 13,
     color: colors.black,

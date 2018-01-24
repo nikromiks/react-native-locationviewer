@@ -58,17 +58,6 @@ class DetailContainer extends Component<Props, States> {
     this.props.navigation.goBack();
   };
 
-  handleNameChange = (text) => {
-    this.setState((previousState) => {
-      return {
-        item: {
-          ...previousState.item,
-          name: text,
-        },
-      };
-    });
-  };
-
   handleNoteChange = (text) => {
     this.setState((previousState) => {
       return {
@@ -83,27 +72,14 @@ class DetailContainer extends Component<Props, States> {
   render() {
     return (
       <View style={styles.root}>
-        <Text
-          style={{
-            marginBottom: 10,
-          }}
-        >Name: {this.state.item.name}</Text>
-        <Text
-          style={{
-            marginBottom: 10,
-          }}>Note</Text>
+        <Text style={styles.text}>Name: {this.state.item.name}</Text>
+        <Text style={styles.text}>Note</Text>
         <TextInput
-          style={{
-            height: 140,
-            borderColor: 'gray',
-            borderWidth: 1,
-            padding: 6,
-          }}
+          style={styles.inputNote}
           multiline={true}
           onChangeText={this.handleNoteChange}
           value={this.state.item.note}
         />
-
       </View>
     );
   }

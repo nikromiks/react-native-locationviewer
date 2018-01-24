@@ -2,7 +2,7 @@
 import ActionTypes from 'app/general/components/LocationAPI/actions/LocationApiActionTypes';
 import {type LocationEntity} from 'app/general/components/LocationAPI/reducers/LocationReducer';
 
-function locationAddPoint(name, lat, lng) {
+function locationAddPoint(name: string, lat: number, lng: number) {
   return {
     type: ActionTypes.LOCATION_API_ADD_POINT,
     payload: {

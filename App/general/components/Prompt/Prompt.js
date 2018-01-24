@@ -87,6 +87,7 @@ export default class Prompt extends Component<Props, States> {
         transparent={true}
         visible={this.props.visible}
         animationType="fade"
+        onRequestClose={this.handleClose}
       >
         {this.renderDialog()}
       </Modal>

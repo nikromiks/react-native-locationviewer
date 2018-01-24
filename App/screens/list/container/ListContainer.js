@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import {View, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 
 import I18n from 'app/general/locale/Translations';
 import {renderNavBarButton} from 'app/navigator/AppNavigator';
