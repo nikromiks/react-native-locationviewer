@@ -19,34 +19,39 @@ type State = {
   +error: ?string
 };
 
-const initialState: State = {
+const STUB_POINT = {
+  name: 'Milsons Point',
+  lat: -33.850750,
+  lng: 151.212519,
+  note: '',
+};
+
+export const initialState: State = {
   updated: '',
   entities: [
-    {
-      name: 'Milsons Point',
-      lat: -33.850750,
-      lng: 151.212519,
-      note: '',
-    },
+    STUB_POINT,
   ],
   isLoading: false,
   error: null,
 };
 
 function handleLoadPointsSuccess(state: State, action: Action) {
-  const mergedItems = _.merge(state.entities, action.payload.items);
-  const result = _.map(mergedItems, item => {
-    return {
-      ...item,
-      note: item.note || '',
-    };
-  });
+  if (action.payload && action.payload.items) {
+    const mergedItems = _.merge(state.entities, action.payload.items);
+    const result = _.map(mergedItems, item => {
+      return {
+        ...item,
+        note: item.note || '',
+      };
+    });
 
-  return {
-    ...state,
-    isLoading: false,
-    entities: result,
-  };
+    return {
+      ...state,
+      isLoading: false,
+      entities: result,
+    };
+  }
+  return state;
 }
 
 function handleLoadPointsRequest(state: State) {
@@ -68,25 +73,34 @@ function handleLoadPointsFailed(state: State, action) {
 
 
 function handleAddPoint(state: State, action) {
-  let entities = _.cloneDeep(state.entities);
-  entities.push(action.payload);
+  if (action.payload && action.payload.name) {
+    let entities = _.cloneDeep(state.entities);
+    entities.push(action.payload);
 
-  return {
-    ...state,
-    entities,
-  };
+    return {
+      ...state,
+      entities,
+    };
+  }
+  return state;
 }
 
 function handleUpdatePoint(state, action) {
-  let entities = _.cloneDeep(state.entities);
-  let itemIndex = _.findIndex(entities, {'name': action.payload.name});
+  if (action.payload && action.payload.name) {
+    let entities = _.cloneDeep(state.entities);
+    let itemIndex = _.findIndex(entities, {'name': action.payload.name});
 
-  entities[itemIndex] = action.payload;
+    if (itemIndex !== -1) {
+      entities[itemIndex] = action.payload;
 
-  return {
-    ...state,
-    entities,
-  };
+      return {
+        ...state,
+        entities,
+      };
+    }
+    return state;
+  }
+  return state;
 }
 
 export default createReducer(
