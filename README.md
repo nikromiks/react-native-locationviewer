@@ -3,7 +3,7 @@
 ![alt text](https://github.com/nikromiks/react-native-locationviewer/blob/master/Main_flow.gif)
 
 #### Map Flow
-![alt text](https://github.com/nikromiks/react-native-locationviewer/blob/master/Map_Flow.gif)
+![alt text](https://github.com/nikromiks/react-native-locationviewer/blob/master/Map_flow.gif)
 
 
 ### Available Scripts

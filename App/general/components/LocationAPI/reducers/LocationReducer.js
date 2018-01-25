@@ -34,11 +34,11 @@ const initialState: State = {
 };
 
 function handleLoadPointsSuccess(state: State, action: Action) {
-  const mergedItems = _.unionBy(state.entities, action.payload.items, 'name');
+  const mergedItems = _.merge(state.entities, action.payload.items);
   const result = _.map(mergedItems, item => {
     return {
       ...item,
-      note: '',
+      note: item.note || '',
     };
   });
 
