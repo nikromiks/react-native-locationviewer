@@ -2,6 +2,7 @@
 import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
+import location from 'app/general/components/LocationAPI/middlewares/LocationApiMiddleware';
 
 import storage from 'redux-persist/lib/storage';
 import {persistStore, persistCombineReducers} from 'redux-persist';
@@ -18,7 +19,7 @@ const configPersist = {
 };
 const reducer = persistCombineReducers(configPersist, reducers);
 
-const middlewares = [logger, thunk];
+const middlewares = [logger, thunk, location];
 const middleware = applyMiddleware(...middlewares);
 
 export default function configureStore(): Store {

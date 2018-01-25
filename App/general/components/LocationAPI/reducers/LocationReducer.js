@@ -26,36 +26,21 @@ const initialState: State = {
       lng: 151.212519,
       note: '',
     },
-    {
-      name: 'Bondi Beach',
-      lat: -33.889967,
-      lng: 151.276440,
-      note: '',
-    },
-    {
-      name: 'Circular Quay',
-      lat: -33.860178,
-      lng: 151.212706,
-      note: '',
-    },
-    {
-      name: 'Manly Beach',
-      lat: -33.797151,
-      lng: 151.288784,
-      note: '',
-    },
-    {
-      name: 'Darling Harbour',
-      lat: -33.873379,
-      lng: 151.200940,
-      note: '',
-    },
   ],
 };
 
 function handleLoadPoints(state: State, action: Action) {
+  const mergedItems = _.unionBy(state.entities, action.payload.items, 'name');
+  const result = _.map(mergedItems, item => {
+    return {
+      ...item,
+      note: '',
+    };
+  });
+
   return {
     ...state,
+    entities: result,
   };
 }
 

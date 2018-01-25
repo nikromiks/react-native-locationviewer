@@ -1,9 +1,9 @@
 rootProject.name = 'LocationViewer'
+include ':react-native-fetcher'
+project(':react-native-fetcher').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fetcher/android')
 include ':react-native-maps'
 project(':react-native-maps').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-maps/lib/android')
 include ':react-native-i18n'
 project(':react-native-i18n').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-i18n/android')
-include ':react-native-device-info'
-project(':react-native-device-info').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-device-info/android')
 
 include ':app'
