@@ -25,8 +25,8 @@ export default class ListItemComponent extends React.Component<Props> {
   renderDetails() {
     return (
       <View style={styles.container}>
-        <Text style={styles.iconText}>{this.props.pin.name}</Text>
-        <Text style={styles.iconText}> 10 km</Text>
+        <Text style={styles.nameText}>{this.props.pin.name}</Text>
+        <Text style={styles.noteText}>{this.props.pin.note}</Text>
       </View>
     );
   }
@@ -38,15 +38,13 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    flexDirection: 'row',
     marginHorizontal: 16,
     marginVertical: 10
   },
-  iconText: {
-    color: '#b2b2b2',
-    fontWeight: 'bold',
+  nameText: {
     fontSize: 16,
-    backgroundColor: 'transparent',
-    textAlign: 'center',
+  },
+  noteText: {
+    fontSize: 10,
   },
 });
