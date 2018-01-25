@@ -1,5 +1,5 @@
 // @flow
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {
   Text,
   TextInput,
@@ -85,7 +85,7 @@ export default class Prompt extends Component<Props, States> {
       <Modal
         onDismiss={this.handleClose}
         transparent={true}
-        visible={this.props.visible}
+        visible={this.state.visible}
         animationType="fade"
         onRequestClose={this.handleClose}
       >
@@ -109,7 +109,7 @@ export default class Prompt extends Component<Props, States> {
     const submitButtonTextStyle = this.props.submitButtonTextStyle
       || styles.dialogActionRightText;
     return (
-      <View style={styles.dialogOverlay} key={'prompt'}>
+      <View style={styles.dialogOverlay} key="prompt">
         <View style={styles.dialogContent}>
           <View style={styles.dialogHeader}>
             <Text allowFontScaling={false} style={styles.dialogTitleText}>
@@ -128,7 +128,7 @@ export default class Prompt extends Component<Props, States> {
               autoFocus={true}
               underlineColorAndroid={colors.white}
               placeholderTextColor={colors.promptPlaceholderText}
-              keyboardAppearance={'dark'}
+              keyboardAppearance="dark"
               autoCorrect={false}
             />
           </View>

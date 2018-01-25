@@ -1,9 +1,11 @@
+// @flow
 import keymirror from 'keymirror';
 
-export default routes = keymirror({
+const routes = keymirror({
   List: true,
   Map: true,
   Detail: true,
 });
+export default routes;
 
 export type Routes = $Call<routes>;

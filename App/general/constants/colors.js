@@ -1,4 +1,3 @@
-// TODO FIX HERE!!!!!!!!!!!!!!!!!
 export default {
   absoluteBlack: '#000000',
   black: '#070707',

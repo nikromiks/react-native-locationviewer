@@ -15,13 +15,15 @@ type State = {
   +region: Region,
 };
 
+const STUB_REGION = {
+  latitude: -33.881099,
+  latitudeDelta: 0.343800,
+  longitude: 151.236699,
+  longitudeDelta: 0.257537,
+};
+
 const initialState: State = {
-  region: {
-    latitude: -33.881099,
-    latitudeDelta: 0.343800,
-    longitude: 151.236699,
-    longitudeDelta: 0.257537,
-  },
+  region: STUB_REGION,
 };
 
 function handleUpdateRegion(state: State, action: Action) {

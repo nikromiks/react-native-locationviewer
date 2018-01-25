@@ -13,7 +13,7 @@ jest.mock('react-native-fetcher', () => ({
 describe('Location middleware', () => {
   const createFakeStore = (fakeData, dispatcher) => ({
     getState() {
-      return fakeData
+      return fakeData;
     },
     dispatch(...arg) {
       dispatcher(...arg);
@@ -24,7 +24,7 @@ describe('Location middleware', () => {
     let store = createFakeStore(storeData, dispatcher);
     const dispatch = middleware(store)(actionAttempt => dispatched = actionAttempt);
     dispatch(action);
-    return dispatched
+    return dispatched;
   };
 
   beforeEach(() => {

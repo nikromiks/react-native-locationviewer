@@ -18,7 +18,7 @@ export default (store) => {
             const result = JSON.parse(data);
             store.dispatch(actions.locationLoadPointsSuccess(result.locations));
           }, (error) => {
-            console.log(error);
+            console.info(error);
             store.dispatch(actions.locationLoadPointsFailed(error));
           });
         }

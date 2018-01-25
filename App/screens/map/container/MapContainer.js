@@ -2,8 +2,7 @@
 import React, {Component} from 'react';
 
 import I18n from 'app/general/locale/Translations';
-import {renderNavBarButton} from 'app/navigator/AppNavigator';
-import {resetAction} from 'app/navigator/AppNavigator';
+import {resetAction, renderNavBarButton} from 'app/navigator/AppNavigator';
 import routes from 'app/navigator/routes';
 
 import MapViewComponent from 'app/screens/map/components/MapViewComponent';

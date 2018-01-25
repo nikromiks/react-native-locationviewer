@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "extends": [
     "airbnb",
-    "plugin:flowtype/recommended"
+    "plugin:flowtype/recommended",
+    "eslint:recommended"
   ],
   "plugins": [
     "react",
@@ -10,7 +11,9 @@
     "flowtype"
   ],
   "env": {
-    "es6": true
+    "es6": true,
+    "jest": true,
+    "browser": true
   },
   "globals": {
     "__DEV__": true,
@@ -97,7 +100,7 @@
     "no-shadow": 1,
     "no-undef-init": 2,
     "no-undef": 2,
-    "no-use-before-define": 2,
+    "no-use-before-define": 1,
     //Stylistic Issues
     "array-bracket-spacing": [
       "error",

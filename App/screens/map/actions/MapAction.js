@@ -1,19 +1,23 @@
+// @flow
 import ActionTypes from 'app/screens/map/actions/MapActionTypes';
 
 import type {Region} from 'app/screens/map/reducers/MapReducer';
 
 function roundNumber(num, scale) {
-  if (!('' + num).includes('e')) {
-    return +(Math.round(num + 'e+' + scale) + 'e-' + scale);
+  if (!`${ num}`.includes('e')) {
+    //$FlowFixMe
+    return +`${Math.round(`${num }e+${ scale}`) }e-${ scale}`;
   } else {
-    let arr = ('' + num).split('e');
+    let arr = `${ num}`.split('e');
     let sig = '';
     if (+arr[1] + scale > 0) {
       sig = '+';
     }
-    return +(Math.round(+arr[0] + 'e' + sig + (+arr[1] + scale)) + 'e-' + scale);
+    //$FlowFixMe
+    return +`${Math.round(`${+arr[0] }e${ sig }${+arr[1] + scale}`) }e-${ scale}`;
   }
 }
+
 
 function mapUpdateRegion(region: Region) {
   return {

@@ -85,7 +85,7 @@ class DetailContainer extends Component<Props, States> {
   }
 }
 
-const mapStateToProps = ({detail}: State, props) => {
+const mapStateToProps = (state: State, props) => {
   const params = props.navigation.state.params;
   return {
     item: params.item,

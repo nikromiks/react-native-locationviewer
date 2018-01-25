@@ -3,8 +3,7 @@ import React, {Component} from 'react';
 import {FlatList} from 'react-native';
 
 import I18n from 'app/general/locale/Translations';
-import {renderNavBarButton} from 'app/navigator/AppNavigator';
-import {resetAction} from 'app/navigator/AppNavigator';
+import {resetAction, renderNavBarButton} from 'app/navigator/AppNavigator';
 import routes from 'app/navigator/routes';
 
 import styles from 'app/screens/list/styles/ListStyles';

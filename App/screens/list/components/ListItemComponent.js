@@ -3,6 +3,23 @@ import React from 'react';
 import {StyleSheet, TouchableOpacity, View, Text} from 'react-native';
 import {type LocationEntity} from 'app/general/components/LocationAPI/reducers/LocationReducer';
 
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    marginHorizontal: 16,
+    marginVertical: 10
+  },
+  nameText: {
+    fontSize: 16,
+  },
+  noteText: {
+    fontSize: 10,
+  },
+});
+
 type Props = {
   onPress: (*) => void,
   pin: LocationEntity
@@ -31,20 +48,3 @@ export default class ListItemComponent extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    marginHorizontal: 16,
-    marginVertical: 10
-  },
-  nameText: {
-    fontSize: 16,
-  },
-  noteText: {
-    fontSize: 10,
-  },
-});

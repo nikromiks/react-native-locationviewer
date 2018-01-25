@@ -1,10 +1,10 @@
 // @flow
 import React, {Component} from 'react';
 import {View, ActivityIndicator} from 'react-native';
+import styles from 'app/screens/list/styles/ListStyles';
 import AppNavigator from 'app/navigator/AppNavigator';
-import type {State} from './general/types/State';
+import type {State} from 'app/general/types/State';
 import {connect} from 'react-redux';
-import styles from './screens/list/styles/ListStyles';
 
 type Props = {
   isLoading: boolean

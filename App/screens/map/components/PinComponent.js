@@ -34,12 +34,13 @@ export default class PinComponent extends Component<Props> {
         }}
       >
         <MapView.Callout
-          onPress={this.handlePressPin}>
+          onPress={this.handlePressPin}
+        >
           <View>
             <Text>{pin.name}</Text>
           </View>
         </MapView.Callout>
       </MapView.Marker>
     );
-  };
+  }
 }
