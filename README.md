@@ -9,11 +9,15 @@
 ### Pre-requirements
 Android SDK and Xcode [instruction](https://facebook.github.io/react-native/docs/getting-started.html)
 
+Cocoapods for installing iOS dependencies [link](https://cocoapods.org/)
+
 ### Available Scripts
 ##### Installation
 Please use apropriate method.
 
-`npm install` or `yarn`
+`npm install` or `yarn` in root folder
+
+`pod install` to install pods in `./ios` folder 
 
 #### Run
 
