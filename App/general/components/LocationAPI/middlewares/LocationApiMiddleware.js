@@ -1,7 +1,8 @@
 import RNFetcher from 'react-native-fetcher';
 import actions from 'app/general/actions';
 
-import {REHYDRATE} from 'redux-persist/lib/constants';
+import ActionTypes from 'app/general/components/SystemAPI/actions/SystemApiActionTypes';
+import {NET_STATUS} from 'app/general/components/SystemAPI/constants/SystemApiStatus';
 
 const URL = 'http://bit.ly/test-locations';
 
@@ -9,17 +10,18 @@ export default (store) => {
 
   return (next) => (action) => {
     switch (action.type) {
-      case REHYDRATE: {
-        RNFetcher.loadLocationListFromUrl(URL, (data) => {
-          console.log(data);
-          const result = JSON.parse(data);
-          console.log(result);
+      case ActionTypes.SYSTEM_API_CHANGE_NET_STATE: {
+        if (action.payload === NET_STATUS.IS_REACHABLE) {
+          store.dispatch(actions.locationLoadPointsRequest());
 
-          store.dispatch(actions.locationLoadPoints(result.locations));
-        }, (error, exception) => {
-          console.log(error, exception);
-        });
-
+          RNFetcher.loadLocationListFromUrl(URL, (data) => {
+            const result = JSON.parse(data);
+            store.dispatch(actions.locationLoadPointsSuccess(result.locations));
+          }, (error) => {
+            console.log(error);
+            store.dispatch(actions.locationLoadPointsFailed(error));
+          });
+        }
         break;
       }
 

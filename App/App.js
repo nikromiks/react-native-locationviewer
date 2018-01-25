@@ -4,10 +4,13 @@ import {View, ActivityIndicator} from 'react-native';
 import AppNavigator from 'app/navigator/AppNavigator';
 import type {State} from './general/types/State';
 import {connect} from 'react-redux';
-import {APP_STATUS, NET_STATUS} from './general/components/SystemAPI/constants/SystemApiStatus';
 import styles from './screens/list/styles/ListStyles';
 
-class App extends Component<{}> {
+type Props = {
+  isLoading: boolean
+}
+
+class App extends Component<Props> {
   render() {
     return (
       <View style={{flex: 1}}>
@@ -18,17 +21,15 @@ class App extends Component<{}> {
   }
 
   renderLoadingIndicator = () => {
-    if (!this.props.isOnline) {
+    if (this.props.isLoading) {
       return <ActivityIndicator style={styles.loadingIndicator}/>;
     }
   };
 }
 
-const mapStateToProps = ({system}: State) => {
+const mapStateToProps = ({location}: State) => {
   return {
-    isOnline:
-    system.appState.next === APP_STATUS.ACTIVE &&
-    system.netState === NET_STATUS.IS_REACHABLE,
+    isLoading: location.isLoading,
   };
 };
 

@@ -1,6 +1,10 @@
 // @flow
 import ActionTypes from 'app/general/components/LocationAPI/actions/LocationApiActionTypes';
+import {createAction} from 'redux-actions';
 import {type LocationEntity} from 'app/general/components/LocationAPI/reducers/LocationReducer';
+
+const locationLoadPointsRequest = createAction(ActionTypes.LOCATION_API_LOAD_REQUEST);
+const locationLoadPointsFailed = createAction(ActionTypes.LOCATION_API_LOAD_FAILED);
 
 function locationAddPoint(name: string, lat: number, lng: number) {
   return {
@@ -9,7 +13,7 @@ function locationAddPoint(name: string, lat: number, lng: number) {
       name,
       lat,
       lng,
-      note: ''
+      note: '',
     },
   };
 }
@@ -23,9 +27,9 @@ function locationUpdatePoint(item: LocationEntity) {
   };
 }
 
-function locationLoadPoints(items: Array<LocationEntity>) {
+function locationLoadPointsSuccess(items: Array<LocationEntity>) {
   return {
-    type: ActionTypes.LOCATION_API_LOAD_POINTS,
+    type: ActionTypes.LOCATION_API_LOAD_SUCCESS,
     payload: {
       items,
     },
@@ -33,7 +37,9 @@ function locationLoadPoints(items: Array<LocationEntity>) {
 }
 
 module.exports = {
+  locationLoadPointsRequest,
+  locationLoadPointsFailed,
+  locationLoadPointsSuccess,
   locationAddPoint,
   locationUpdatePoint,
-  locationLoadPoints,
 };

@@ -14,11 +14,13 @@ export type LocationEntity = {
 
 type State = {
   +updated: string,
-  +entities: Array<LocationEntity>
+  +entities: Array<LocationEntity>,
+  +isLoading: boolean,
+  +error: ?string
 };
 
 const initialState: State = {
-  updated: '2016-12-01T06:52:08Z',
+  updated: '',
   entities: [
     {
       name: 'Milsons Point',
@@ -27,9 +29,11 @@ const initialState: State = {
       note: '',
     },
   ],
+  isLoading: false,
+  error: null,
 };
 
-function handleLoadPoints(state: State, action: Action) {
+function handleLoadPointsSuccess(state: State, action: Action) {
   const mergedItems = _.unionBy(state.entities, action.payload.items, 'name');
   const result = _.map(mergedItems, item => {
     return {
@@ -40,7 +44,25 @@ function handleLoadPoints(state: State, action: Action) {
 
   return {
     ...state,
+    isLoading: false,
     entities: result,
+  };
+}
+
+function handleLoadPointsRequest(state: State) {
+  return {
+    ...state,
+    isLoading: true,
+    error: null,
+  };
+}
+
+function handleLoadPointsFailed(state: State, action) {
+
+  return {
+    ...state,
+    isLoading: false,
+    error: action.payload,
   };
 }
 
@@ -69,7 +91,9 @@ function handleUpdatePoint(state, action) {
 
 export default createReducer(
   {
-    [ActionTypes.LOCATION_API_LOAD_POINTS]: handleLoadPoints,
+    [ActionTypes.LOCATION_API_LOAD_SUCCESS]: handleLoadPointsSuccess,
+    [ActionTypes.LOCATION_API_LOAD_REQUEST]: handleLoadPointsRequest,
+    [ActionTypes.LOCATION_API_LOAD_FAILED]: handleLoadPointsFailed,
     [ActionTypes.LOCATION_API_ADD_POINT]: handleAddPoint,
     [ActionTypes.LOCATION_API_UPDATE_POINT]: handleUpdatePoint,
   },
